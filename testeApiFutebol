@@ -1,0 +1,36 @@
+package testesApiFutebol;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.Test;
+
+public class DesafioApiFutebol{
+
+	          @Test
+	          public void desafioApiFutebol(){
+	
+	                Map<String, String> qParam= new HashMap();
+                	Map<String, String> hMap= new HashMap();
+	                String url= “https://www.api-futebol.com.br”;
+	                String path= “campeonato/campeonato-brasileiro/2024”;
+	                String token= “Inserir token”;
+
+	                hMap.put(“api_keys”, token);
+	                qParam.put(“nome_popular”, ‘Brasileirão 2024’);
+	                qParam.put(“atleta_id”, “19958”);
+	
+	                .given()
+	                        .headers(hMap)
+	                        .queryParams(qParam)
+	                        .log().all()
+                	.when()
+                        	.get(url)
+	                        .then()
+	                        .assertThat()
+	                        .log().all()
+	                        .statusCode(200)
+	                        .body(ConstainsString(“Vegetti”);	
+          }
+}
